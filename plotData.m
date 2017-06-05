@@ -1,12 +1,11 @@
-function plotData(x, y)
-%PLOTDATA Plots the data points x and y into a new figure 
-%   PLOTDATA(x,y) plots the data points and gives the figure axes labels of
-%   population and profit.
-
-figure; % open a new figure window
-
-plot(x, y, 'rx', 'MarkerSize', 10);
-xlabel('Population of City in 10,000s');
-ylabel('Profit in $10,000s');
-
+function plotData(X, y)
+%PLOTDATA Plots the data points X and y into a new figure 
+%   PLOTDATA(x,y) plots the data points with + for the positive examples
+%   and o for the negative examples. X is assumed to be a Mx2 matrix.
+figure; hold on;
+pos=find(y==1);
+neg=find(y==0);
+plot(X(pos,1),X(pos,2),'k+','LineWidth',2,'MarkerSize',7);
+plot(X(neg,1),X(neg,2),'ko','MarkerFaceColor','y','MarkerSize',7);
+hold off;
 end
